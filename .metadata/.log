@@ -1,0 +1,71 @@
+!SESSION 2017-11-01 00:56:39.664 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=9
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=ko_KR
+Framework arguments:  -product org.eclipse.epp.package.jee.product -keyring /Users/choihwan-il/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.jee.product -keyring /Users/choihwan-il/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2017-11-01 00:57:39.745
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.e4.ui.workbench 4 0 2017-11-01 01:00:06.048
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.eclipse.e4.core.di.InjectionException: java.lang.IllegalStateException: Expected the service to be TERMINATED, but the service has FAILED
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:68)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.processAnnotated(InjectorImpl.java:898)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.disposed(InjectorImpl.java:398)
+	at org.eclipse.e4.core.internal.di.Requestor.disposed(Requestor.java:148)
+	at org.eclipse.e4.core.internal.contexts.ContextObjectSupplier$ContextInjectionListener.update(ContextObjectSupplier.java:78)
+	at org.eclipse.e4.core.internal.contexts.TrackableComputationExt.update(TrackableComputationExt.java:111)
+	at org.eclipse.e4.core.internal.contexts.TrackableComputationExt.handleInvalid(TrackableComputationExt.java:74)
+	at org.eclipse.e4.core.internal.contexts.EclipseContext.dispose(EclipseContext.java:174)
+	at org.eclipse.e4.core.internal.contexts.EclipseContext.dispose(EclipseContext.java:159)
+	at org.eclipse.e4.core.internal.contexts.EclipseContext.dispose(EclipseContext.java:159)
+	at org.eclipse.e4.core.internal.contexts.EclipseContext.dispose(EclipseContext.java:159)
+	at org.eclipse.e4.core.internal.contexts.osgi.EclipseContextOSGi.dispose(EclipseContextOSGi.java:106)
+	at org.eclipse.e4.core.internal.contexts.osgi.EclipseContextOSGi.bundleChanged(EclipseContextOSGi.java:139)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.dispatchEvent(BundleContextImpl.java:902)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.ListenerQueue.dispatchEventSynchronous(ListenerQueue.java:148)
+	at org.eclipse.osgi.internal.framework.EquinoxEventPublisher.publishBundleEventPrivileged(EquinoxEventPublisher.java:165)
+	at org.eclipse.osgi.internal.framework.EquinoxEventPublisher.publishBundleEvent(EquinoxEventPublisher.java:75)
+	at org.eclipse.osgi.internal.framework.EquinoxEventPublisher.publishBundleEvent(EquinoxEventPublisher.java:67)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor.publishModuleEvent(EquinoxContainerAdaptor.java:102)
+	at org.eclipse.osgi.container.Module.publishEvent(Module.java:466)
+	at org.eclipse.osgi.container.Module.doStop(Module.java:624)
+	at org.eclipse.osgi.container.Module.stop(Module.java:488)
+	at org.eclipse.osgi.container.SystemModule.stop(SystemModule.java:186)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$SystemBundle$EquinoxSystemModule$1.run(EquinoxBundle.java:159)
+	at java.base/java.lang.Thread.run(Thread.java:844)
+Caused by: java.lang.IllegalStateException: Expected the service to be TERMINATED, but the service has FAILED
+	at com.google.common.util.concurrent.AbstractService.checkCurrentState(AbstractService.java:334)
+	at com.google.common.util.concurrent.AbstractService.awaitTerminated(AbstractService.java:313)
+	at com.google.common.util.concurrent.AbstractIdleService.awaitTerminated(AbstractIdleService.java:198)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.diStop(ServerConnection.java:292)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:56)
+	... 25 more
+Caused by: java.lang.NoClassDefFoundError: java/sql/Time
+	at com.google.gson.Gson.<init>(Gson.java:230)
+	at com.google.gson.GsonBuilder.create(GsonBuilder.java:545)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.getInstance(Json.java:59)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:88)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.refreshConfiguration(IO.java:70)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:101)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	... 1 more
+Caused by: java.lang.ClassNotFoundException: java.sql.Time
+	at java.base/java.lang.ClassLoader.findClass(ClassLoader.java:709)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:563)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:496)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:351)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:344)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:160)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:496)
+	... 9 more
